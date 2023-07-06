@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 
 import styles from "./SearchResultsContainer.module.scss";
 import pin from "../../../../application/constants/icons/map/pin.svg";
-import getRetailPoints from "../../../../infrastructure/api/getRetailPoints";
+import getRetailPoints from "../../../../infrastructure/api/Yper/getRetailPoints";
 import SearchResults from "../../../../infrastructure/components/SearchResults/SearchResults";
 
 const SearchResultsContainer: FC = () => {
@@ -45,7 +45,7 @@ const SearchResultsContainer: FC = () => {
               <div className={styles.imgContainer}>
                 <img src={pin} alt="Location" />
               </div>
-              <p className={styles.text}>Lancez une recherche pour afficher les points de vente ici !</p>
+              <p className={styles.text}>Lancez une recherche pour afficher les points de vente ici&nbsp;!</p>
             </Col>
           </Row>
         </Container>
