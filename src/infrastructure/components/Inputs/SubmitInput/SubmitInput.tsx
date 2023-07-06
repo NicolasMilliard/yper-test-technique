@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./SubmitInput.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../application/redux/store";
