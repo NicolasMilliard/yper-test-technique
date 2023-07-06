@@ -6,6 +6,10 @@
     background-color: #EEEFF2;
     font-size: 1rem;
     color: #757575;
+
+    @media (max-width: 480px) {
+        width: 100%
+    }
 }
 
 .listContainer {

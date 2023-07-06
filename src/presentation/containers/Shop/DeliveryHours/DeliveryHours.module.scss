@@ -17,10 +17,16 @@
     color: #303036;
     font-size: 18px;
     line-height: 46px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .itemList {
     width: 400px;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 480px) {
+        width: 100%
+    }
 }
