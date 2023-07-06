@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 
 import styles from "./SearchResults.module.scss";
 
+interface Result {
+  _id: string;
+  name: string;
+}
+
 interface Props {
-  results: any[];
+  results: Result[];
 }
 
 const SearchResults: FC<Props> = ({ results }) => {
-  console.log(results);
   return (
     <Container className={styles.container}>
       <h2 className={styles.title}>Résultats de la recherche&nbsp;:</h2>
