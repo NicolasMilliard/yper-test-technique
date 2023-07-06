@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./application/redux/store";
 import Header from "./presentation/containers/Header/Header";
-import Home from "./presentation/pages/Home";
-import Shop from "./presentation/pages/Shop";
+import Home from "./presentation/pages/Home/Home";
+import Shop from "./presentation/pages/Shop/Shop";
 
 const App: FC = () => {
   return (
