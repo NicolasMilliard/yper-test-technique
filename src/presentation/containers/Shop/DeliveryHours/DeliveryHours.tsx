@@ -4,7 +4,7 @@ import styles from "./DeliveryHours.module.scss";
 import formatDay from "../../../../application/utils/hours/formatDay";
 import formatHour from "../../../../application/utils/hours/formatHour";
 
-interface Hour {
+export interface Hour {
   day: number;
   hours: {
     start: string;
@@ -19,7 +19,7 @@ interface Props {
 const DeliveryHours: FC<Props> = ({ hours }) => {
   return (
     <Container>
-      <h2 className={styles.title}>Horaires d'ouverture :</h2>
+      <h2 className={styles.title}>Horaires d'ouverture&nbsp;:</h2>
       <Container className={styles.container}>
         <ul className={styles.list}>
           {hours && (
@@ -27,8 +27,9 @@ const DeliveryHours: FC<Props> = ({ hours }) => {
               {hours.map((item: any) => (
                 <li key={item.day} className={styles.itemList}>
                   <span>{formatDay(item.day)}</span>
-                  <span>{formatHour(item.hours.start)}</span>
-                  <span>{formatHour(item.hours.end)}</span>
+                  <span>
+                    {formatHour(item.hours.start)}-{formatHour(item.hours.end)}
+                  </span>
                 </li>
               ))}
             </>
