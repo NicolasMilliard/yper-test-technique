@@ -1,33 +1,29 @@
 import { FC, useState, useEffect, useTransition } from "react";
 import ShopDetails from "../ShopDetails/ShopDetails";
-import DeliveryHours from "../DeliveryHours/DeliveryHours";
-import getShopDetails from "../../../../infrastructure/api/getShopDetails";
+import DeliveryHours, { Hour } from "../DeliveryHours/DeliveryHours";
+import getShopDetails from "../../../../infrastructure/api/Yper/getShopDetails";
 
 interface Props {
   idShop: string | undefined;
 }
 
-interface ShopDetails {
+interface ShopDetailsType {
   name: string;
   address: {
     street: string;
     city: string;
     zip: number;
   };
-  delivery_hours: any; // TO DO
+  delivery_hours: Hour[];
 }
 
 const ShopContainer: FC<Props> = ({ idShop }) => {
   const [isPending, startTransition] = useTransition();
-  const [data, setData] = useState<ShopDetails | null>(null);
+  const [data, setData] = useState<ShopDetailsType | null>(null);
 
   useEffect(() => {
     fetchData();
   }, [idShop]);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const fetchData = async () => {
     if (idShop) {
@@ -45,13 +41,17 @@ const ShopContainer: FC<Props> = ({ idShop }) => {
 
   return (
     <>
-      <ShopDetails
-        shopName={data?.name}
-        address={data?.address.street}
-        city={data?.address.city}
-        zipCode={data?.address.zip}
-      />
-      <DeliveryHours hours={data?.delivery_hours} />
+      {data && (
+        <>
+          <ShopDetails
+            shopName={data.name}
+            address={data.address.street}
+            city={data.address.city}
+            zipCode={data.address.zip}
+          />
+          <DeliveryHours hours={data.delivery_hours} />
+        </>
+      )}
     </>
   );
 };
