@@ -1,0 +1,46 @@
+.container {
+    margin-top: 42px;
+    margin-bottom: 42px;
+    background: #EEEFF2;
+    padding: 40px 30px;
+}
+
+.title {
+    color: #303036;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 64px;
+}
+
+.list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.shopTitle {
+    color: #303036;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.shopLink {
+    color: #3497DC;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration-line: underline;
+
+    &:hover, &:focus {
+        color: #1C366B;
+    }
+}

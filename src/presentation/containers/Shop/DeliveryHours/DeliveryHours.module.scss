@@ -1,0 +1,26 @@
+.title {
+    color: #303036;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.container {
+    background-color: #EEEFF2;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 44px;
+}
+
+.list {
+    list-style: none;
+    color: #303036;
+    font-size: 18px;
+    line-height: 46px;
+}
+
+.itemList {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
