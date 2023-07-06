@@ -21,6 +21,7 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
+    callbackName: "AUTOCOMPLETE",
     debounce: 300,
     requestOptions: {
       region: "FR",
@@ -44,7 +45,6 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
         dispatch(setLocation({ lat: lat, lng: lng }));
-        console.log("📍 Coordinates: ", { lat, lng });
       });
     };
 
@@ -73,6 +73,7 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
         value={value}
         onChange={handleInput}
         disabled={!ready}
+        required
       />
       {/* Address list */}
       {status === "OK" && (
