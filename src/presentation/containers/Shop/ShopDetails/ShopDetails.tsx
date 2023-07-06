@@ -5,10 +5,10 @@ import MainTitle from "../../../../infrastructure/components/TextFields/MainTitl
 import styles from "./ShopDetails.module.scss";
 
 interface Props {
-  shopName: string | undefined;
-  address: string | undefined;
-  city: string | undefined;
-  zipCode: number | undefined;
+  shopName: string;
+  address: string;
+  city: string;
+  zipCode: number;
 }
 
 const ShopDetails: FC<Props> = ({ shopName, address, city, zipCode }) => {
