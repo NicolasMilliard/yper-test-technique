@@ -42,7 +42,7 @@ Outils utilisés à travers ce projet :
 
 ## Installation
 
-**Step 1:**
+**Etape 1 :**
 
 ```sh
 # Clone the repo
@@ -53,10 +53,11 @@ cd yper-test-technique
 npm install
 ```
 
-**Step 4:**
+**Etape 2 :**
+
 Vous devez être en possession d'une clé API Google ainsi que d'une clé API Yper. Une fois ces deux clés obtenues, créer un fichier `.env` à la racine du projet en suivant les indications du fichier `.env.example`.
 
-**Step 3:**
+**Etape 3 :**
 
 ```sh
 # Start the project
