@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./Header.module.scss";
 
-import logo from "../../../application/constants/images/logo/yper-logo.svg";
+import logo from "application/constants/images/logo/yper-logo.svg";
 
 const Header: FC = () => {
   return (

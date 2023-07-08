@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Container from "react-bootstrap/Container";
 import styles from "./DeliveryHours.module.scss";
-import formatDay from "../../../../application/utils/hours/formatDay";
-import formatHour from "../../../../application/utils/hours/formatHour";
+import formatDay from "application/utils/hours/formatDay";
+import formatHour from "application/utils/hours/formatHour";
 
 export interface Hour {
   day: number;

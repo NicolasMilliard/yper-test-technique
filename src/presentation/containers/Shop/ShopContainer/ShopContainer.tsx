@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useTransition } from "react";
 import ShopDetails from "../ShopDetails/ShopDetails";
 import DeliveryHours, { Hour } from "../DeliveryHours/DeliveryHours";
-import getShopDetails from "../../../../infrastructure/api/Yper/getShopDetails";
+import getShopDetails from "infrastructure/api/Yper/getShopDetails";
 
 interface Props {
   idShop: string | undefined;

@@ -1,18 +1,24 @@
 import { FC } from "react";
-import pin from "../../../../application/constants/icons/map/google-maps-pin.svg";
+import { Link } from "react-router-dom";
+import pin from "application/constants/icons/map/google-maps-pin.svg";
 
 interface Props {
   lat: number;
   lng: number;
-  text: string | null;
+  link: string | null;
 }
 
-const Marker: FC<Props> = ({ lat, lng, text }) => {
+const Marker: FC<Props> = ({ lat, lng, link }) => {
   return (
-    <div>
-      <img src={pin} alt="Pin" />
-      <span>{text}</span>
-    </div>
+    <>
+      {link ? (
+        <Link to={`/shop/${link}`}>
+          <img src={pin} alt="Pin" />
+        </Link>
+      ) : (
+        <img src={pin} alt="Pin" />
+      )}
+    </>
   );
 };
 

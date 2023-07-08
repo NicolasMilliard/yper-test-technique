@@ -3,7 +3,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 import useOnclickOutside from "react-cool-onclickoutside";
 
 import { useDispatch } from "react-redux";
-import { setLocation } from "../../../../application/redux/locationSlice";
+import { setLocation } from "application/redux/locationSlice";
 
 import styles from "./AutocompleteInput.module.scss";
 

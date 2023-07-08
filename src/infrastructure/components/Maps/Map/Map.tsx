@@ -22,7 +22,6 @@ interface Marker {
 }
 
 const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
-  console.log("markers", markers);
   const mapProps = {
     center: {
       lat: latitude,
@@ -32,7 +31,7 @@ const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
 
   return (
     <div className={styles.container}>
-      <GoogleMap apiKey="AIzaSyCNemhlRhzcu8bF9WzTZOZtyPdWWPL5O-k" defaultCenter={mapProps.center} defaultZoom={zoom}>
+      <GoogleMap apiKey={process.env.REACT_APP_GOOGLE_API_KEY} defaultCenter={mapProps.center} defaultZoom={zoom}>
         {/* Used for the home page */}
         {markers.length > 1 &&
           markers.map((marker) => (
@@ -40,7 +39,7 @@ const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
               key={marker._id}
               lat={marker.address.location.coordinates[1]}
               lng={marker.address.location.coordinates[0]}
-              text={marker.name}
+              link={marker._id}
             />
           ))}
 
@@ -50,7 +49,7 @@ const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
             key={markers[0]._id}
             lat={markers[0].address.location.coordinates[0]}
             lng={markers[0].address.location.coordinates[1]}
-            text={markers[0].name}
+            link={null}
           />
         )}
       </GoogleMap>

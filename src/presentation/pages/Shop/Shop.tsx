@@ -1,9 +1,9 @@
 import { FC } from "react";
 import Container from "react-bootstrap/Container";
 import { useParams, useNavigate } from "react-router-dom";
-import ShopContainer from "../../containers/Shop/ShopContainer/ShopContainer";
-import IconButton from "../../../infrastructure/components/Buttons/IconButton/IconButton";
-import arrow from "../../../application/constants/icons/nav/arrow.svg";
+import ShopContainer from "presentation/containers/Shop/ShopContainer/ShopContainer";
+import IconButton from "infrastructure/components/Buttons/IconButton/IconButton";
+import arrow from "application/constants/icons/nav/arrow.svg";
 import styles from "./Shop.module.scss";
 
 const Shop: FC = () => {

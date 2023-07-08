@@ -1,6 +1,6 @@
 import { FC } from "react";
-import AutocompleteInput from "../../../../infrastructure/components/Inputs/AutocompleteInput/AutocompleteInput";
-import SubmitInput from "../../../../infrastructure/components/Inputs/SubmitInput/SubmitInput";
+import AutocompleteInput from "infrastructure/components/Inputs/AutocompleteInput/AutocompleteInput";
+import SubmitInput from "infrastructure/components/Inputs/SubmitInput/SubmitInput";
 
 import styles from "./FormContainer.module.scss";
 

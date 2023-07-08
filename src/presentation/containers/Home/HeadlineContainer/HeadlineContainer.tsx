@@ -4,9 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
-import MainTitle from "../../../../infrastructure/components/TextFields/MainTitle/MainTitle";
+import MainTitle from "infrastructure/components/TextFields/MainTitle/MainTitle";
 import FormContainer from "../FormContainer/FormContainer";
-import storeSign from "../../../../application/constants/images/common/store-sign.png";
+import storeSign from "application/constants/images/common/store-sign.png";
 import styles from "./HeadlineContainer.module.scss";
 
 const HeadlineContainer: FC = () => {

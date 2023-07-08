@@ -1,6 +1,6 @@
 import { FC } from "react";
-import HeadlineContainer from "../../containers/Home/HeadlineContainer/HeadlineContainer";
-import SearchResultsContainer from "../../containers/Home/SearchResultsContainer/SearchResultsContainer";
+import HeadlineContainer from "presentation/containers/Home/HeadlineContainer/HeadlineContainer";
+import SearchResultsContainer from "presentation/containers/Home/SearchResultsContainer/SearchResultsContainer";
 
 const Home: FC = () => {
   return (

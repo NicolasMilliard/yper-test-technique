@@ -3,7 +3,7 @@ import IconButton from "./IconButton";
 
 describe("IconButton", () => {
   const buttonText = "Click me";
-  const buttonIcon = "../../../../application/constants/icons/nav/arrow.svg";
+  const buttonIcon = "application/constants/icons/nav/arrow.svg";
   const buttonIconText = "Icon";
   const buttonFunc = jest.fn();
 
