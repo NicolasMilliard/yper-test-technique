@@ -13,6 +13,12 @@ interface ShopDetailsType {
     street: string;
     city: string;
     zip: number;
+    location: {
+      coordinates: {
+        0: number;
+        1: number;
+      };
+    };
   };
   delivery_hours: Hour[];
 }
@@ -48,6 +54,8 @@ const ShopContainer: FC<Props> = ({ idShop }) => {
             address={data.address.street}
             city={data.address.city}
             zipCode={data.address.zip}
+            latitude={data.address.location.coordinates[1]}
+            longitude={data.address.location.coordinates[0]}
           />
           <DeliveryHours hours={data.delivery_hours} />
         </>
