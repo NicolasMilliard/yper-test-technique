@@ -37,7 +37,7 @@ const SearchResultsContainer: FC = () => {
   return (
     <>
       {data.length > 0 ? (
-        <SearchResults results={data} />
+        <SearchResults results={data} latitude={location.lat} longitude={location.lng} />
       ) : (
         <Container className={styles.container}>
           <Row>
