@@ -1,4 +1,6 @@
-import { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent, useEffect } from "react";
+// Custom hook
+import { useGeolocated } from "react-geolocated";
 // Autocomplete
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
@@ -17,6 +19,13 @@ interface Props {
 }
 
 const AutocompleteInput: FC<Props> = ({ placeholder }) => {
+  const { coords } = useGeolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+  });
+
   const dispatch = useDispatch();
 
   const {
@@ -37,6 +46,7 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
     clearSuggestions();
   });
 
+  // Called when the list is clicked
   const handleSelect =
     ({ description }: { description: string }) =>
     () => {
@@ -65,6 +75,16 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
       );
     });
 
+  // If geolocation is enabled, location state is updated as input value
+  useEffect(() => {
+    if (coords) {
+      if (coords.latitude !== 0 && coords.longitude !== 0) {
+        dispatch(setLocation({ lat: coords.latitude, lng: coords.longitude }));
+        setValue(`${coords.latitude},${coords.longitude}`);
+      }
+    }
+  }, [coords]);
+
   return (
     <div ref={ref}>
       <Input
@@ -74,10 +94,14 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
         disabled={!ready}
       />
       {/* Address list */}
-      {status === "OK" ? (
-        <ResultsList list={renderSuggestions()} />
-      ) : (
-        <>{status && <ResultsError error={formatStatus(status)} />}</>
+      {!coords && (
+        <>
+          {status === "OK" ? (
+            <ResultsList list={renderSuggestions()} />
+          ) : (
+            <>{status && <ResultsError error={formatStatus(status)} />}</>
+          )}
+        </>
       )}
     </div>
   );
