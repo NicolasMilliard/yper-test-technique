@@ -14,7 +14,7 @@ const getShopDetails = async (idShop: string) => {
         return response.data;
         
     } catch (error) {
-        console.log(error);
+        throw new Error("Echec du chargement des informations de ce point de vente. Veuillez ré-essayer.");
     }
 }
 
