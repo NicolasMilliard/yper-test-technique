@@ -2,12 +2,11 @@ import { FC } from "react";
 import Marker from "../Marker/Marker";
 import GoogleMap from "google-maps-react-markers";
 
-import styles from "./Map.module.scss";
-
 interface Props {
   latitude: number;
   longitude: number;
   zoom: number;
+  mapHeight: number;
   markers: Marker[];
 }
 
@@ -21,7 +20,7 @@ interface Marker {
   name: string;
 }
 
-const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
+const Map: FC<Props> = ({ latitude, longitude, zoom, mapHeight, markers }) => {
   const mapProps = {
     center: {
       lat: latitude,
@@ -30,7 +29,7 @@ const Map: FC<Props> = ({ latitude, longitude, zoom, markers }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div style={{ width: "100%", height: `${mapHeight}px` }}>
       <GoogleMap apiKey={process.env.REACT_APP_GOOGLE_API_KEY} defaultCenter={mapProps.center} defaultZoom={zoom}>
         {/* Used for the home page */}
         {markers.length > 1 &&
