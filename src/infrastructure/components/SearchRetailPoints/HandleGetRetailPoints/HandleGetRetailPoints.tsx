@@ -10,6 +10,8 @@ import DefaultSearchResults from "presentation/components/SearchRetailsPoints/De
 import ErrorMessage from "presentation/components/Errors/ErrorMessage/ErrorMessage";
 import Loader from "presentation/components/Loader/Loader";
 import SearchResults from "presentation/components/SearchRetailsPoints/SearchResults/SearchResults";
+// Types
+import { isApiError } from "application/types/ApiError";
 
 interface Props {
   lat: number;
@@ -41,9 +43,11 @@ const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
         setData(response.result);
       });
       setIsLoading(false);
-    } catch (error: any) {
-      setError(error.message);
-      setIsLoading(false);
+    } catch (error) {
+      if (isApiError(error)) {
+        setError(error.message);
+        setIsLoading(false);
+      }
     }
   };
 

@@ -5,35 +5,20 @@ import getRetailPointDetails from "infrastructure/api/Yper/getRetailPointDetails
 import ErrorContainer from "presentation/containers/RetailPoint/ErrorContainer/ErrorContainer";
 import LoaderContainer from "presentation/containers/RetailPoint/LoaderContainer/LoaderContainer";
 import RetailPointDetailsContainer from "presentation/containers/RetailPoint/RetailPointDetailsContainer/RetailPointDetailsContainer";
-import DeliveryHoursContainer, {
-  Hour,
-} from "presentation/containers/RetailPoint/DeliveryHoursContainer/DeliveryHoursContainer";
+import DeliveryHoursContainer from "presentation/containers/RetailPoint/DeliveryHoursContainer/DeliveryHoursContainer";
+// Types
+import { RetailPointDetailsInterface } from "application/types/RetailPoint";
+import { isApiError } from "application/types/ApiError";
 
 interface Props {
   idRetailPoint: string;
-}
-
-interface ShopDetailsType {
-  name: string;
-  address: {
-    street: string;
-    city: string;
-    zip: number;
-    location: {
-      coordinates: {
-        0: number;
-        1: number;
-      };
-    };
-  };
-  delivery_hours: Hour[];
 }
 
 const HandleGetRetailPointDetails: FC<Props> = ({ idRetailPoint }) => {
   const [isPending, startTransition] = useTransition();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  const [data, setData] = useState<ShopDetailsType | null>(null);
+  const [data, setData] = useState<RetailPointDetailsInterface | null>(null);
 
   useEffect(() => {
     fetchRetailPointDetails();
@@ -48,9 +33,11 @@ const HandleGetRetailPointDetails: FC<Props> = ({ idRetailPoint }) => {
         setData(response.result);
       });
       setIsLoading(false);
-    } catch (error: any) {
-      setError(error.message);
-      setIsLoading(false);
+    } catch (error) {
+      if (isApiError(error)) {
+        setError(error.message);
+        setIsLoading(false);
+      }
     }
   };
 

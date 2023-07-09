@@ -4,8 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MainTitle from "presentation/components/TextFields/MainTitle/MainTitle";
 import Map from "infrastructure/components/Maps/Map/Map";
-
 import styles from "./RetailPointDetailsContainer.module.scss";
+// Types
+import { SearchResultsInterface } from "application/types/Search";
 
 interface Props {
   shopName: string;
@@ -16,18 +17,8 @@ interface Props {
   longitude: number;
 }
 
-interface Result {
-  _id: string;
-  name: string;
-  address: {
-    location: {
-      coordinates: number[];
-    };
-  };
-}
-
 const RetailPointDetailsContainer: FC<Props> = ({ shopName, address, city, zipCode, latitude, longitude }) => {
-  const marker: Result[] = [
+  const marker: SearchResultsInterface[] = [
     {
       _id: "1",
       name: shopName,

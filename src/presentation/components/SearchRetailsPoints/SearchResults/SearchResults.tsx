@@ -2,22 +2,14 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Map from "../../../../infrastructure/components/Maps/Map/Map";
+import Map from "infrastructure/components/Maps/Map/Map";
+// Types
+import { SearchResultsInterface } from "application/types/Search";
 
 import styles from "./SearchResults.module.scss";
 
-interface Result {
-  _id: string;
-  name: string;
-  address: {
-    location: {
-      coordinates: number[];
-    };
-  };
-}
-
 interface Props {
-  results: Result[];
+  results: SearchResultsInterface[];
   latitude: number;
   longitude: number;
 }

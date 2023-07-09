@@ -1,15 +1,9 @@
-import { FC, ChangeEvent } from "react";
-
+import { FC } from "react";
 import styles from "./Input.module.scss";
+// Types
+import { InputInterface } from "application/types/UI";
 
-interface Props {
-  placeholder: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  disabled: boolean;
-}
-
-const Input: FC<Props> = ({ placeholder, value, onChange, disabled }) => {
+const Input: FC<InputInterface> = ({ placeholder, value, onChange, disabled }) => {
   return (
     <input
       type="text"

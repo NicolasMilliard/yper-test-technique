@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./ResultsList.module.scss";
 
 interface Props {
-  list: any;
+  list: JSX.Element[];
 }
 
 const ResultsList: FC<Props> = ({ list }) => {

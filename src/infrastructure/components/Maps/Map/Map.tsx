@@ -1,26 +1,10 @@
 import { FC } from "react";
 import Marker from "../Marker/Marker";
 import GoogleMap from "google-maps-react-markers";
+// Types
+import { MapInterface } from "application/types/Map";
 
-interface Props {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-  mapHeight: number;
-  markers: Marker[];
-}
-
-interface Marker {
-  _id: string;
-  address: {
-    location: {
-      coordinates: number[];
-    };
-  };
-  name: string;
-}
-
-const Map: FC<Props> = ({ latitude, longitude, zoom, mapHeight, markers }) => {
+const Map: FC<MapInterface> = ({ latitude, longitude, zoom, mapHeight, markers }) => {
   const mapProps = {
     center: {
       lat: latitude,
