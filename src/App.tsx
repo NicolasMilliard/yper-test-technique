@@ -4,7 +4,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import store from "./application/redux/store";
 import Header from "./presentation/containers/Header/Header";
 import Home from "./presentation/pages/Home/Home";
-import Shop from "./presentation/pages/Shop/Shop";
+import RetailPoint from "./presentation/pages/RetailPoint/RetailPoint";
 
 const App: FC = () => {
   return (
@@ -14,7 +14,7 @@ const App: FC = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/shop/:idShop" element={<Shop />} />
+            <Route path="/shop/:idRetailPoint" element={<RetailPoint />} />
           </Routes>
         </BrowserRouter>
       </ReduxProvider>
