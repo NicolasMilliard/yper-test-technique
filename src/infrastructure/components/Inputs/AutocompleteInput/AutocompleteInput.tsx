@@ -49,7 +49,7 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
       });
     };
 
-  const renderSuggestions = () =>
+  const renderSuggestions = (): JSX.Element[] =>
     data.map((suggestion) => {
       const {
         place_id,
