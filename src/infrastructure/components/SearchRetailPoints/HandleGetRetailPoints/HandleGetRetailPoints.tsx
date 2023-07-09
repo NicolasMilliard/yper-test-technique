@@ -6,10 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearch } from "application/redux/searchSlice";
 import { RootState } from "application/redux/store";
 // Components
-import DefaultSearchResults from "../DefaultSearchResults/DefaultSearchResults";
+import DefaultSearchResults from "presentation/components/SearchRetailsPoints/DefaultSearchResults/DefaultSearchResults";
 import ErrorMessage from "presentation/components/Errors/ErrorMessage/ErrorMessage";
 import Loader from "presentation/components/Loader/Loader";
-import SearchResults from "../SearchResults/SearchResults";
+import SearchResults from "presentation/components/SearchRetailsPoints/SearchResults/SearchResults";
 
 interface Props {
   lat: number;
@@ -21,7 +21,7 @@ const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
   const isSearching = useSelector(({ search }: RootState) => search.isSearching);
   const [isPending, startTransition] = useTransition();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -42,16 +42,16 @@ const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
       });
       setIsLoading(false);
     } catch (error: any) {
-      setIsError(error.message);
+      setError(error.message);
       setIsLoading(false);
     }
   };
 
   return (
     <>
-      {!isLoading && !isError && data.length === 0 && <DefaultSearchResults />}
+      {!isLoading && !error && data.length === 0 && <DefaultSearchResults />}
       {isLoading && <Loader />}
-      {isError && <ErrorMessage text={isError} />}
+      {error && <ErrorMessage text={error} />}
       {data.length > 0 && <SearchResults results={data} latitude={lat} longitude={lng} />}
     </>
   );
