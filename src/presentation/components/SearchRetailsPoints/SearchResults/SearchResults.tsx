@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Map from "../../Maps/Map/Map";
+import Map from "../../../../infrastructure/components/Maps/Map/Map";
 
 import styles from "./SearchResults.module.scss";
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getShopDetails = async (idShop: string) => {
+const getRetailPointDetails = async (idShop: string) => {
     const YPER_API_KEY = process.env.REACT_APP_YPER_API_KEY;
 
     try {
@@ -18,4 +18,4 @@ const getShopDetails = async (idShop: string) => {
     }
 }
 
-export default getShopDetails;
+export default getRetailPointDetails;

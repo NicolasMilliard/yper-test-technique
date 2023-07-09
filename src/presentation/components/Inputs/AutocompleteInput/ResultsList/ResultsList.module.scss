@@ -1,22 +1,8 @@
-.input {
-    width: 400px;
-    border: none;
-    outline-color: #1C366B;
-    padding: 1rem;
-    background-color: #EEEFF2;
-    font-size: 1rem;
-    color: #757575;
-
-    @media (max-width: 480px) {
-        width: 100%
-    }
-}
-
 .listContainer {
     position: relative;
 }
 
-.list, .error {
+.list {
     position: absolute;
     left:0;
     top: 0;
@@ -32,11 +18,6 @@
         padding-left: 1em;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
-    }
-}
-
-.list {
-    & > li {
         border-bottom: 1px solid #757575;
 
         &:hover {

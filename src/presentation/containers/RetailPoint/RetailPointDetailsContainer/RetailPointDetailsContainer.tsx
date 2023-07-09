@@ -2,10 +2,10 @@ import { FC } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import MainTitle from "infrastructure/components/TextFields/MainTitle/MainTitle";
+import MainTitle from "presentation/components/TextFields/MainTitle/MainTitle";
 import Map from "infrastructure/components/Maps/Map/Map";
 
-import styles from "./RetailPointDetails.module.scss";
+import styles from "./RetailPointDetailsContainer.module.scss";
 
 interface Props {
   shopName: string;
@@ -26,7 +26,7 @@ interface Result {
   };
 }
 
-const RetailPointDetails: FC<Props> = ({ shopName, address, city, zipCode, latitude, longitude }) => {
+const RetailPointDetailsContainer: FC<Props> = ({ shopName, address, city, zipCode, latitude, longitude }) => {
   const marker: Result[] = [
     {
       _id: "1",
@@ -59,4 +59,4 @@ const RetailPointDetails: FC<Props> = ({ shopName, address, city, zipCode, latit
   );
 };
 
-export default RetailPointDetails;
+export default RetailPointDetailsContainer;

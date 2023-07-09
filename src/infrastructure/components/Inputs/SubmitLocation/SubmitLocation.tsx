@@ -1,14 +1,14 @@
 import { FC } from "react";
-import styles from "./SubmitInput.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "application/redux/store";
 import { setSearch } from "application/redux/searchSlice";
+import SubmitInput from "presentation/components/Inputs/SubmitInput/SubmitInput";
 
 interface Props {
   value: string;
 }
 
-const SubmitInput: FC<Props> = ({ value }) => {
+const SubmitLocation: FC<Props> = ({ value }) => {
   const dispatch = useDispatch();
   const location = useSelector(({ location }: RootState) => location.value);
 
@@ -21,7 +21,7 @@ const SubmitInput: FC<Props> = ({ value }) => {
     }
   };
 
-  return <input className={styles.input} type="submit" value={value} onClick={handleSubmit} />;
+  return <SubmitInput value={value} customFunc={handleSubmit} />;
 };
 
-export default SubmitInput;
+export default SubmitLocation;

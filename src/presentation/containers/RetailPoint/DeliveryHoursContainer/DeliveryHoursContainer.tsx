@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Container from "react-bootstrap/Container";
-import styles from "./DeliveryHours.module.scss";
+import styles from "./DeliveryHoursContainer.module.scss";
 import formatDay from "application/utils/hours/formatDay";
 import formatHour from "application/utils/hours/formatHour";
 
@@ -16,7 +16,7 @@ interface Props {
   hours: Hour[];
 }
 
-const DeliveryHours: FC<Props> = ({ hours }) => {
+const DeliveryHoursContainer: FC<Props> = ({ hours }) => {
   return (
     <Container>
       <h2 className={styles.title}>Horaires d'ouverture&nbsp;:</h2>
@@ -41,4 +41,4 @@ const DeliveryHours: FC<Props> = ({ hours }) => {
   );
 };
 
-export default DeliveryHours;
+export default DeliveryHoursContainer;
