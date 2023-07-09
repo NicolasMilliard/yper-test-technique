@@ -20,7 +20,8 @@ Ce test technique permet à un utilisateur de rechercher des magasins enregistr�
 
 Fonctionnalités à venir :
 
-- Pré-remplir l'adresse de l'utilisateur avec sa position actuelle
+✔️ Pré-remplir l'adresse de l'utilisateur avec sa position actuelle
+
 - Pagination de l'API Yper
 - Rendre dynamique la taille de la zone de recherche via un slider
 - Map interactive sur la page du magasin pour proposer un itinéraire depuis Google Maps
@@ -38,6 +39,7 @@ Outils utilisés à travers ce projet :
 - React Router DOM
 - SDK Google Maps (places-autocomplete)
 - Google Maps React Markers
+- React Geolocated
 - Dotenv
 - Axios
 - Redux
