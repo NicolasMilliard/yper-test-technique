@@ -1,9 +1,13 @@
 import { FC, ChangeEvent } from "react";
+// Autocomplete
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
-
+// Redux
 import { useDispatch } from "react-redux";
 import { setLocation } from "application/redux/locationSlice";
+// Error
+import ErrorMessage from "presentation/components/Errors/ErrorMessage/ErrorMessage";
+import formatStatus from "application/utils/Google/PlacesServiceStatus/formatStatus";
 
 import styles from "./AutocompleteInput.module.scss";
 
@@ -76,10 +80,22 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
         required
       />
       {/* Address list */}
-      {status === "OK" && (
+      {status === "OK" ? (
         <div className={styles.listContainer}>
           <ul className={styles.list}>{renderSuggestions()}</ul>
         </div>
+      ) : (
+        <>
+          {status && (
+            <div className={styles.listContainer}>
+              <span className={styles.error}>
+                <li>
+                  <ErrorMessage text={formatStatus(status)} />
+                </li>
+              </span>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
