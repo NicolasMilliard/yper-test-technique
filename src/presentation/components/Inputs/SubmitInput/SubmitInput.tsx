@@ -1,12 +1,9 @@
 import { FC } from "react";
 import styles from "./SubmitInput.module.scss";
+// Types
+import { SubmitInputInterface } from "application/types/UI";
 
-interface Props {
-  value: string;
-  customFunc: () => void;
-}
-
-const SubmitInput: FC<Props> = ({ value, customFunc }) => {
+const SubmitInput: FC<SubmitInputInterface> = ({ value, customFunc }) => {
   return <input className={styles.input} type="submit" value={value} onClick={customFunc} />;
 };
 
