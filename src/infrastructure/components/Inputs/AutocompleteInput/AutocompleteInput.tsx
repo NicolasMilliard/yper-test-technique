@@ -6,10 +6,11 @@ import useOnclickOutside from "react-cool-onclickoutside";
 import { useDispatch } from "react-redux";
 import { setLocation } from "application/redux/locationSlice";
 // Error
-import ErrorMessage from "presentation/components/Errors/ErrorMessage/ErrorMessage";
 import formatStatus from "application/utils/Google/PlacesServiceStatus/formatStatus";
-
-import styles from "./AutocompleteInput.module.scss";
+// Components
+import Input from "presentation/components/Inputs/AutocompleteInput/Input/Input";
+import ResultsList from "presentation/components/Inputs/AutocompleteInput/ResultsList/ResultsList";
+import ResultsError from "presentation/components/Inputs/AutocompleteInput/ResultsError/ResultsError";
 
 interface Props {
   placeholder: string;
@@ -35,10 +36,6 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
   const ref = useOnclickOutside(() => {
     clearSuggestions();
   });
-
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
 
   const handleSelect =
     ({ description }: { description: string }) =>
@@ -70,32 +67,17 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
 
   return (
     <div ref={ref}>
-      <input
-        className={styles.input}
-        type="text"
+      <Input
         placeholder={placeholder}
         value={value}
-        onChange={handleInput}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         disabled={!ready}
-        required
       />
       {/* Address list */}
       {status === "OK" ? (
-        <div className={styles.listContainer}>
-          <ul className={styles.list}>{renderSuggestions()}</ul>
-        </div>
+        <ResultsList list={renderSuggestions()} />
       ) : (
-        <>
-          {status && (
-            <div className={styles.listContainer}>
-              <span className={styles.error}>
-                <li>
-                  <ErrorMessage text={formatStatus(status)} />
-                </li>
-              </span>
-            </div>
-          )}
-        </>
+        <>{status && <ResultsError error={formatStatus(status)} />}</>
       )}
     </div>
   );
