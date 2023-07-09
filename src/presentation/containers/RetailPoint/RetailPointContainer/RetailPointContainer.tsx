@@ -1,10 +1,10 @@
 import { FC, useState, useEffect, useTransition } from "react";
-import ShopDetails from "../ShopDetails/ShopDetails";
+import RetailPointDetails from "../RetailPointDetails/RetailPointDetails";
 import DeliveryHours, { Hour } from "../DeliveryHours/DeliveryHours";
 import getShopDetails from "infrastructure/api/Yper/getShopDetails";
 
 interface Props {
-  idShop: string | undefined;
+  idRetailPoint: string | undefined;
 }
 
 interface ShopDetailsType {
@@ -23,18 +23,18 @@ interface ShopDetailsType {
   delivery_hours: Hour[];
 }
 
-const ShopContainer: FC<Props> = ({ idShop }) => {
+const RetailPointContainer: FC<Props> = ({ idRetailPoint }) => {
   const [isPending, startTransition] = useTransition();
   const [data, setData] = useState<ShopDetailsType | null>(null);
 
   useEffect(() => {
     fetchData();
-  }, [idShop]);
+  }, [idRetailPoint]);
 
   const fetchData = async () => {
-    if (idShop) {
+    if (idRetailPoint) {
       try {
-        const response = await getShopDetails(idShop);
+        const response = await getShopDetails(idRetailPoint);
         // Update state as a non-blocking transition
         startTransition(() => {
           setData(response.result);
@@ -49,7 +49,7 @@ const ShopContainer: FC<Props> = ({ idShop }) => {
     <>
       {data && (
         <>
-          <ShopDetails
+          <RetailPointDetails
             shopName={data.name}
             address={data.address.street}
             city={data.address.city}
@@ -64,4 +64,4 @@ const ShopContainer: FC<Props> = ({ idShop }) => {
   );
 };
 
-export default ShopContainer;
+export default RetailPointContainer;

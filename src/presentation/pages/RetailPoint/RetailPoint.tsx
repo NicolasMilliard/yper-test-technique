@@ -1,18 +1,18 @@
 import { FC } from "react";
 import Container from "react-bootstrap/Container";
 import { useParams, useNavigate } from "react-router-dom";
-import ShopContainer from "presentation/containers/Shop/ShopContainer/ShopContainer";
+import RetailPointContainer from "presentation/containers/RetailPoint/RetailPointContainer/RetailPointContainer";
 import IconButton from "infrastructure/components/Buttons/IconButton/IconButton";
 import arrow from "application/constants/icons/nav/arrow.svg";
-import styles from "./Shop.module.scss";
+import styles from "./RetailPoint.module.scss";
 
-const Shop: FC = () => {
-  const { idShop } = useParams();
+const RetailPoint: FC = () => {
+  const { idRetailPoint } = useParams();
   const navigate = useNavigate();
 
   return (
     <>
-      <ShopContainer idShop={idShop} />
+      <RetailPointContainer idRetailPoint={idRetailPoint} />
       <Container className={styles.link}>
         <IconButton imageSource={arrow} imageAlt="<-" text="Retour aux résultats" customFunc={() => navigate(-1)} />
       </Container>
@@ -20,4 +20,4 @@ const Shop: FC = () => {
   );
 };
 
-export default Shop;
+export default RetailPoint;

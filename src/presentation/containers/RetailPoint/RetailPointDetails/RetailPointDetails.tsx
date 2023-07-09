@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import MainTitle from "infrastructure/components/TextFields/MainTitle/MainTitle";
 import Map from "infrastructure/components/Maps/Map/Map";
 
-import styles from "./ShopDetails.module.scss";
+import styles from "./RetailPointDetails.module.scss";
 
 interface Props {
   shopName: string;
@@ -26,7 +26,7 @@ interface Result {
   };
 }
 
-const ShopDetails: FC<Props> = ({ shopName, address, city, zipCode, latitude, longitude }) => {
+const RetailPointDetails: FC<Props> = ({ shopName, address, city, zipCode, latitude, longitude }) => {
   const marker: Result[] = [
     {
       _id: "1",
@@ -52,11 +52,11 @@ const ShopDetails: FC<Props> = ({ shopName, address, city, zipCode, latitude, lo
           </ul>
         </Col>
         <Col sm={12} md={6}>
-          <Map latitude={latitude} longitude={longitude} zoom={16} markers={marker} />
+          <Map latitude={latitude} longitude={longitude} zoom={16} mapHeight={311} markers={marker} />
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default ShopDetails;
+export default RetailPointDetails;
