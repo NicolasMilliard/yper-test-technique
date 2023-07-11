@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type Search = {
+interface Search {
     isSearching: boolean;
 }
 
 const initialState: Search = {
     isSearching: false
-}
+};
 
 const searchSlice = createSlice({
     name: "search",

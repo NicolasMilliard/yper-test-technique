@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type Location = {
+interface Location {
     value: {
         lat: number,
         lng: number
@@ -12,7 +12,7 @@ const initialState: Location = {
         lat: 0,
         lng: 0
     }
-}
+};
 
 const locationSlice = createSlice({
     name: "location",
