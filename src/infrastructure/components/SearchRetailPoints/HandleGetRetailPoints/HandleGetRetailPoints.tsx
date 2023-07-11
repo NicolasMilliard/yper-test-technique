@@ -4,6 +4,7 @@ import getRetailPoints from "infrastructure/api/Yper/getRetailPoints";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearch } from "application/redux/searchSlice";
+import { setResults } from "application/redux/resultsSlice";
 import { RootState } from "application/redux/store";
 // Components
 import DefaultSearchResults from "presentation/components/SearchRetailsPoints/DefaultSearchResults/DefaultSearchResults";
@@ -21,6 +22,8 @@ interface Props {
 const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
   const dispatch = useDispatch();
   const isSearching = useSelector(({ search }: RootState) => search.isSearching);
+  const results = useSelector(({ results }: RootState) => results);
+  const pagination = useSelector(({ pagination }: RootState) => pagination.pagination);
   const [isPending, startTransition] = useTransition();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -32,15 +35,19 @@ const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
       // Search is complete
       dispatch(setSearch(false));
     }
-  }, [isSearching]);
+  }, [isSearching, pagination]);
 
   const fetchRetailPoints = async () => {
     try {
       setIsLoading(true);
-      const response = await getRetailPoints(lat, lng);
+      const response = await getRetailPoints(lat, lng, pagination);
+      // TO DO: add a checker to detect if desired values are already in the cache
       // Update state as a non-blocking transition
       startTransition(() => {
         setData(response.result);
+        // Used for cache
+        dispatch(setResults(results.concat(response.result)));
+        console.log(results);
       });
       setIsLoading(false);
     } catch (error) {
