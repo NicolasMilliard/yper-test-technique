@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Pagination from "infrastructure/components/SearchRetailPoints/Pagination/Pagination";
 import Map from "infrastructure/components/Maps/Map/Map";
 // Types
 import { SearchResultsInterface } from "application/types/Search";
@@ -33,6 +34,7 @@ const SearchResults: FC<Props> = ({ results, latitude, longitude }) => {
             </span>
           ))}
         </ul>
+        <Pagination currentResults={results} />
       </Col>
       <Col sm={12} md={6}>
         <Map latitude={latitude} longitude={longitude} zoom={12} mapHeight={537} markers={results} />
