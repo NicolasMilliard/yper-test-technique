@@ -1,0 +1,29 @@
+.buttonContainer {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.button {
+    border: none;
+    outline-color: #1C366B;
+    padding: 1rem 2rem;
+    background-color: #1C366B;
+    color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+
+    &:hover, &:focus {
+        background-color: #0e1f42;
+    }
+
+    &:disabled {
+        opacity: 0.3;
+    }
+}
+
+.imageReverse {
+    transform: scaleX(-1)
+}
