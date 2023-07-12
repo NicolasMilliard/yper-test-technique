@@ -25,6 +25,7 @@ Fonctionnalités à venir :
 
 - Rendre dynamique la taille de la zone de recherche via un slider
 - Map interactive sur la page du magasin pour proposer un itinéraire depuis Google Maps
+- Optimiser le SCSS via l'utilisation de constantes
 
 ---
 
