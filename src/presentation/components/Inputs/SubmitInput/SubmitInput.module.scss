@@ -3,13 +3,13 @@
     border: none;
     outline-color: #1C366B;
     padding: 1rem;
-    background: #1C366B;
+    background-color: #1C366B;
     color: #FFF;
     text-align: center;
     font-size: 1rem;
     font-weight: 700;
 
     &:hover, &:focus {
-        background: #0e1f42;
+        background-color: #0e1f42;
     }
 }
