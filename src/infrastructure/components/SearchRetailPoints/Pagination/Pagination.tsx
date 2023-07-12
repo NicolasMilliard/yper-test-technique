@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPagination } from "application/redux/paginationSlice";
 import { setSearch } from "application/redux/searchSlice";
 import { RootState } from "application/redux/store";
+import PaginationButtons from "presentation/components/SearchRetailsPoints/PaginationButtons/PaginationButtons";
 // Types
 import { SearchResultsInterface } from "application/types/Search";
 
@@ -31,14 +32,12 @@ const Pagination: FC<Props> = ({ currentResults }) => {
   }, [pagination]);
 
   return (
-    <div>
-      <button disabled={pagination === 0 ? true : false} onClick={decreasePagination}>
-        Précédent
-      </button>
-      <button disabled={currentResults.length === 10 ? false : true} onClick={increasePagination}>
-        Suivant
-      </button>
-    </div>
+    <PaginationButtons
+      pagination={pagination}
+      results={currentResults}
+      increase={increasePagination}
+      decrease={decreasePagination}
+    />
   );
 };
 
