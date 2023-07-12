@@ -13,6 +13,7 @@ import Loader from "presentation/components/Loader/Loader";
 import SearchResults from "presentation/components/SearchRetailsPoints/SearchResults/SearchResults";
 // Types
 import { isApiError } from "application/types/ApiError";
+import { SearchResultsInterface } from "application/types/Search";
 
 interface Props {
   lat: number;
@@ -27,28 +28,40 @@ const HandleGetRetailPoints: FC<Props> = ({ lat, lng }) => {
   const [isPending, startTransition] = useTransition();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<SearchResultsInterface[]>([]);
+  const itemsPerPage: number = 10;
 
   useEffect(() => {
     if (isSearching) {
-      fetchRetailPoints();
+      fetchRetailPoints(itemsPerPage);
       // Search is complete
       dispatch(setSearch(false));
     }
   }, [isSearching, pagination]);
 
-  const fetchRetailPoints = async () => {
+  const fetchRetailPoints = async (itemsPerPage: number) => {
     try {
       setIsLoading(true);
-      const response = await getRetailPoints(lat, lng, pagination);
-      // TO DO: add a checker to detect if desired values are already in the cache
-      // Update state as a non-blocking transition
-      startTransition(() => {
-        setData(response.result);
-        // Used for cache
-        dispatch(setResults(results.concat(response.result)));
-        console.log(results);
-      });
+      // Check if the desired results are already stored in the application
+      if (results.length >= (pagination + 1) * 10) {
+        // Desired result is in the cache
+        // Update state as a non-blocking transition
+        startTransition(() => {
+          const start: number = pagination * itemsPerPage;
+          const end: number = (pagination + 1) * itemsPerPage;
+          const cacheResults: SearchResultsInterface[] = results.slice(start, end);
+
+          setData(cacheResults);
+        });
+      } else {
+        const response = await getRetailPoints(lat, lng, pagination);
+        // Update state as a non-blocking transition
+        startTransition(() => {
+          setData(response.result);
+          // Used for cache
+          dispatch(setResults(results.concat(response.result)));
+        });
+      }
       setIsLoading(false);
     } catch (error) {
       if (isApiError(error)) {
