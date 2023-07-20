@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useEffect } from "react";
+import { FC, ChangeEvent, useEffect, useState } from "react";
 // Custom hook
 import { useGeolocated } from "react-geolocated";
 // Autocomplete
@@ -21,13 +21,10 @@ interface Props {
 const AutocompleteInput: FC<Props> = ({ placeholder }) => {
   const { coords } = useGeolocated({
     positionOptions: {
-      enableHighAccuracy: false,
+      enableHighAccuracy: true,
     },
     userDecisionTimeout: 5000,
   });
-
-  const dispatch = useDispatch();
-
   const {
     ready,
     value,
@@ -41,6 +38,9 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
       region: "FR",
     },
   });
+
+  const dispatch = useDispatch();
+  const [coordinates, setCoordinates] = useState<GeolocationCoordinates | undefined>(undefined);
 
   const ref = useOnclickOutside(() => {
     clearSuggestions();
@@ -75,26 +75,28 @@ const AutocompleteInput: FC<Props> = ({ placeholder }) => {
       );
     });
 
+  // Update value and reset coords
+  const handleValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    setCoordinates(undefined);
+  };
+
   // If geolocation is enabled, location state is updated as input value
   useEffect(() => {
     if (coords) {
       if (coords.latitude !== 0 && coords.longitude !== 0) {
         dispatch(setLocation({ lat: coords.latitude, lng: coords.longitude }));
         setValue(`${coords.latitude},${coords.longitude}`);
+        setCoordinates(coords);
       }
     }
   }, [coords]);
 
   return (
     <div ref={ref}>
-      <Input
-        placeholder={placeholder}
-        value={value}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-        disabled={!ready}
-      />
+      <Input placeholder={placeholder} value={value} onChange={handleValue} disabled={!ready} />
       {/* Address list */}
-      {!coords && (
+      {coordinates === undefined && (
         <>
           {status === "OK" ? (
             <ResultsList list={renderSuggestions()} />
