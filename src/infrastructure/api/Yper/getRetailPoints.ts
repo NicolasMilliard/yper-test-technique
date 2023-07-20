@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const getRetailPoints = async (lat: number, lng: number, pagination: number) => {
+const getRetailPoints = async (lat: number, lng: number, pagination: number, distance:number) => {
   const YPER_API_KEY = process.env.REACT_APP_YPER_API_KEY;
-  const max_distance = "30000";
+  const max_distance = distance * 1000;
   const max_results = 10;
-
+  
   try {
     const timestamp = Date.now();
     const response = await axios.get(
