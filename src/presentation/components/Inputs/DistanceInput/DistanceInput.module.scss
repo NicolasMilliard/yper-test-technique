@@ -1,0 +1,17 @@
+.label {
+    font-size: 18px;
+}
+
+.inputContainer {
+    display: flex;
+    gap: 16px;
+}
+
+.inputRange, .datalist {
+    width: 200px;
+}
+
+.datalist {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
-import IconButton from "./IconButton";
+import TextIconButton from "./TextIconButton";
 
-describe("IconButton", () => {
+describe("TextIconButton", () => {
   const buttonText = "Click me";
   const buttonIcon = "application/constants/icons/nav/arrow.svg";
   const buttonIconText = "Icon";
@@ -13,7 +13,7 @@ describe("IconButton", () => {
 
   it("renders the button with image and text", () => {
     const { getByRole, getByAltText, getByText } = render(
-      <IconButton imageSource={buttonIcon} imageAlt={buttonIconText} text={buttonText} customFunc={buttonFunc} />
+      <TextIconButton imageSource={buttonIcon} imageAlt={buttonIconText} text={buttonText} customFunc={buttonFunc} />
     );
 
     const button = getByRole("button");
@@ -27,7 +27,7 @@ describe("IconButton", () => {
 
   it("calls the customFunc when the button is clicked", () => {
     const { getByRole } = render(
-      <IconButton imageSource={buttonIcon} imageAlt={buttonIconText} text={buttonText} customFunc={buttonFunc} />
+      <TextIconButton imageSource={buttonIcon} imageAlt={buttonIconText} text={buttonText} customFunc={buttonFunc} />
     );
 
     const button = getByRole("button");

@@ -1,0 +1,15 @@
+.button {
+    background: none;
+    border: none;
+    outline: none;
+    color: #3497DC;
+    font-size: 18px;
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+.text {
+    padding-left: 13px;
+}
