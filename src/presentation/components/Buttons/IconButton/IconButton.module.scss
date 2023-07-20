@@ -1,15 +1,10 @@
 .button {
-    background: none;
+    width: 60px;
+    height: 60px;
     border: none;
-    outline: none;
-    color: #3497DC;
-    font-size: 18px;
+    background-color: #fff;
 
-    &:hover, &:focus {
-        text-decoration: underline;
+    &:hover {
+        background-color: #eeeff2;
     }
-}
-
-.text {
-    padding-left: 13px;
 }
