@@ -7,7 +7,7 @@ import logo from "application/constants/images/logo/yper-logo.svg";
 
 const Header: FC = () => {
   return (
-    <Navbar className={styles.shadow}>
+    <Navbar className={styles.header}>
       <Container>
         <Navbar.Brand href="/">
           <img src={logo} alt="Yper - logo" />
