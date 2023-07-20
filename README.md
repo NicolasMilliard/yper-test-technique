@@ -21,9 +21,9 @@ Ce test technique permet à un utilisateur de rechercher des magasins enregistr�
 Fonctionnalités à venir :
 
 ✔️ Pré-remplir l'adresse de l'utilisateur avec sa position actuelle<br>
-✔️ Pagination de l'API Yper
+✔️ Pagination de l'API Yper<br>
+✔️ Rendre dynamique la taille de la zone de recherche via un slider
 
-- Rendre dynamique la taille de la zone de recherche via un slider
 - Map interactive sur la page du magasin pour proposer un itinéraire depuis Google Maps
 - Optimiser le SCSS via l'utilisation de constantes
 
