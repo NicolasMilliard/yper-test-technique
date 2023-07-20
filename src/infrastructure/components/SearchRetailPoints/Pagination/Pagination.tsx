@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPagination } from "application/redux/paginationSlice";
+import { setPagination } from "application/redux/searchFiltersSlice";
 import { setSearch } from "application/redux/searchSlice";
 import { RootState } from "application/redux/store";
 import PaginationButtons from "presentation/components/SearchRetailsPoints/PaginationButtons/PaginationButtons";
@@ -13,7 +13,7 @@ interface Props {
 
 const Pagination: FC<Props> = ({ currentResults }) => {
   const dispatch = useDispatch();
-  const pagination = useSelector(({ pagination }: RootState) => pagination.pagination);
+  const pagination = useSelector(({ filters }: RootState) => filters.pagination);
 
   const decreasePagination = () => {
     dispatch(setPagination(pagination - 1));
