@@ -2,13 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import locationSlice from "./locationSlice";
 import searchSlice from "./searchSlice";
 import resultsSlice from "./resultsSlice";
-import paginationSlice from "./paginationSlice";
+import searchFiltersSlice from "./searchFiltersSlice";
 
 const rootReducer = combineReducers({
     location: locationSlice,
     search: searchSlice,
     results: resultsSlice,
-    pagination: paginationSlice
+    filters: searchFiltersSlice
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
