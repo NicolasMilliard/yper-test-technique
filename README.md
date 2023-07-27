@@ -18,14 +18,12 @@ Test technique réalisé pour Yper.
 
 Ce test technique permet à un utilisateur de rechercher des magasins enregistrés chez Yper autour de lui. Les magasins trouvés sont afficher sous forme d'une liste et via une map interactive. L'utilisateur peut obtenir davantage d'informations sur la page dédiée au magasin comme son adresse exacte et ses horaires d'ouvertures.
 
-Fonctionnalités à venir :
+Fonctionnalités ajoutées :
 
 ✔️ Pré-remplir l'adresse de l'utilisateur avec sa position actuelle<br>
 ✔️ Pagination de l'API Yper<br>
-✔️ Rendre dynamique la taille de la zone de recherche via un slider
-
-- Map interactive sur la page du magasin pour proposer un itinéraire depuis Google Maps
-- Optimiser le SCSS via l'utilisation de constantes
+✔️ Rendre dynamique la taille de la zone de recherche via un slider<br>
+✔️ Lien "Obtenir l'itinéraire" sur la page du magasin
 
 ---
 
