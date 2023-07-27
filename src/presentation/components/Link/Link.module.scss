@@ -1,0 +1,17 @@
+.link {
+    width: 170px;
+    height: 60px;
+    border: none;
+    outline-color: #1C366B;
+    padding: 1rem;
+    background-color: #1C366B;
+    color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover, &:focus {
+        background-color: #0e1f42;
+    }
+}
